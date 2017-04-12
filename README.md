@@ -205,6 +205,7 @@ The dns-nameservers can be the IP of any DNS service, not necessarily the one pr
 6. For slaves machine, after making the configurations above, remember the configurations will take effect only after 1) you reboot the machine **OR** 2) shut down port using `sudo ifdown eth1` and then restart using `sudo ifup eth1`. Though the command may return error information, it actually works.
 7. You should be able to ping each other now using IP.
 
+
 ### Tips
 1. To prevent warning for Ambari part, you can set the hosts as 'ip_address domain_name alias', each node should maintain the same copies of hosts configuration file.
 2. If you want to set the hosts as 'ip_address domain_name alias'. In the file `/etc/hosts`, you should list `all the hosts` below the localhost on each machine. Otherwise you would receive warning `Transparent Huge Pages` as you can see below when deploying the Ambari Server.
@@ -219,7 +220,7 @@ cat /sys/kernel/mm/transparent_hugepage/enabled
 ```
 4. If you are facing issues with connectivity, check the physical connection carefully to understand which port is considered eth0 and which port is eth1. **DO NOT** assume that eth0 and eth1 for all machines line up in the same column position in the machines.
 5. One really useful hack to speed up the entire subnetting process is to initially load the final `/etc/hosts` and `/etc/network/interfaces` files for *alpha, beta, gamma and losalamos* in folders on a pen drive. This can then be mounted on a disk(refer to [link](http://askubuntu.com/questions/37767/how-to-access-a-usb-flash-drive-from-the-terminal-how-can-i-mount-a-flash-driv)) and the files directly copied. This prevents bugs while typing and setting up these files.
-
+6. Even if both `sudo ifdown eth1` and `sudo ifup eth1` fails, you can still run 'sudo ifconfig eth1 up' and check if it can ping other resources. Sometimes both the former two command gave error but it can acutally connect with each other.
 
 * Using DHCP
 
