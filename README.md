@@ -582,3 +582,10 @@ If you have problem with innet connection, make sure the cables are connected to
 If you cannot ping from slave nodes, make sure setting ipforwarding rules as 'root' account.
 	- if you don't set proper rules, you won't be able to get internet access from slave nodes.
 	- Make sure you install ambari-agent to all 4 nodes. (apt-get install ambari-agent).
+
+
+- When compiling your hadoop or mapreduce program, you may want to check your default $HADOOP_CLASSPATH at
+'/usr/hdp/2.x.x.x-xxxx/hadoop/bin/hadoop classpath', and set your $HADOOP_CLASSPATH to this. 
+Make sure you do thinks either under user(preferably) or root, if you mix the two, your user will not be able to make change to the file or directory that root created.
+Sometimes when your register the machines, you may come across time out error "Python script has been killed due to timeout after waiting 300 secs" where one or more machines will not be registered sucessfully. Our last machine failed while checking Yarn and checking mapreduce2, and the registration process was forced to stop because of time out error. Don't panic and wait, in our case, it recovered in about 5 minites.
+Sometimes you may come across unavoidable power outage or hard-drive crashing. In this case, you have to reinstall losalamos to get back the internet connection, but you can still leave the slave machine as they are.
